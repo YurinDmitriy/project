@@ -23,11 +23,12 @@ from users import views as user_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('register/', user_views.register, name='register'),
+    path("register/", user_views.register, name="register"),
     path("shop/", include("shop.urls", namespace="shop")),
     path("cart/", include("cart.urls", namespace="cart")),
     path("payment/", include("payment.urls", namespace="payment")),
     path("user_profile/", include("user_profile.urls", namespace="user_profile")),
+    path("catalog/", include("goods.urls", namespace="catalog")),
 ]
 
 if settings.DEBUG:

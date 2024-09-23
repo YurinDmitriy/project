@@ -12,12 +12,12 @@
       <nav>
         <ul id="upper">
           <div id="upper_center">
-            <li class="page" onclick="location.href='{% url 'shop:product_list' %}'">
+            <li class="page">
               <p>MyShop</p>
               <ul class="dropdown">
-                <li>MyShop</li>
-                <li>MyShop</li>
-                <li>MyShop</li>
+                <li onclick="location.href='{% url 'shop:product_list' %}'">MyShop</li>
+                <li onclick="location.href='{% url 'catalog:catalog' %}'">Catalog</li>
+                <li>smthelse</li>
               </ul>
             </li>
             <li class="page">
@@ -63,7 +63,7 @@
 
     <div class="toasts-container position-absolute top-0 start-50 translate-middle-x">
       {% for message in messages %}
-        <div class="toast text-white bg-{{messages.text}}" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast text-white bg-{{ messages.text }}" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
             {% if message.tags == 'success' %}
               Успех
