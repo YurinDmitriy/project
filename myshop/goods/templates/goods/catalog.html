@@ -1,5 +1,61 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-{% block content %}
-Некие товары
+{% block links %}
+  <link rel="stylesheet" href="{% static 'goods/css/style.css' %}" />
 {% endblock %}
+{% block content %}
+  <section>
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+          <div class="row">
+            <!-- карты товара -->
+            {% for product in products %}
+              <div class="col-lg-4 col-md-6 mt-4 product" onclick="location.href = 'product/{{ product.id }}'">
+                <div class="card">
+                  {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" />
+                  {% endif %}
+
+                  <div class="card-body">
+                    <h4 class="card-title">{{ product.name }}</h4>
+                    <h6 style="color: gray;">id: {{ product.display_id }}</h6>
+
+                    <p class="card-text">{{ product.description }}</p>
+                    {% if product.discount %}
+                      <div class="multiple-product-cards-price-block">
+                        <div>
+                          <a href="#" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
+                        </div>
+                        <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+                      </div>
+                    {% else %}
+                      <div class="multiple-product-cards-price-block">
+                        <a href="#" class="btn btn-primary">{{ product.price }}</a>
+                        <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-12">
+          <div class="row px-4">
+            <div class="col-lg-12 sitebar my-4">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis fuga tempora officia et ex quia doloremque ut maxime natus voluptates, magnam saepe incidunt, dicta fugiat officiis mollitia impedit aliquid quibusdam. <a href="#">Подробнее>>></a>
+              </p>
+            </div>
+            <div class="col-lg-12 sitebar my-4">
+              <p>Контейнер с рекламой до футера</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quia culpa animi vitae illum? Animi reprehenderit in alias porro at, cupiditate quo, hic totam, ad similique laudantium saepe quis perspiciatis. Molestiae assumenda dolorem suscipit necessitatibus quos facere tempore. Rerum cumque dolorem nisi? Nihil harum veritatis ut autem dolor labore sequi maiores laudantium magni ducimus, sit voluptates facilis dicta blanditiis consequuntur. Eius, modi fuga illum perspiciatis consectetur ad repudiandae illo aliquid at sint doloremque accusamus exercitationem. Sapiente eius non ad eveniet delectus ratione perspiciatis accusamus natus facere nemo, placeat cumque totam! Autem vel obcaecati esse eius quia vero suscipit quidem ducimus id, beatae sunt quo repellendus laudantium inventore, dignissimos repudiandae sapiente sit enim eum quis? Eveniet ipsum doloribus dolore quas ducimus? Officia incidunt error magni et iste totam commodi corporis? Autem officiis nisi natus illum dolore. Ab voluptatem doloribus debitis ex esse libero veniam dolores. Assumenda recusandae reiciendis iure? Pariatur, blanditiis. Ratione delectus odit ullam voluptates laudantium assumenda eveniet, perspiciatis adipisci dolores alias accusantium dignissimos quam minima, pariatur quo provident ipsa architecto officiis exercitationem reprehenderit? Laboriosam, laudantium! Fugit ad quae illum. Nemo dicta minima eos illum optio sint obcaecati mollitia amet excepturi, consequatur illo? Temporibus, eos! Dolores molestiae consectetur perferendis amet! Laboriosam recusandae dolores maxime, quod consectetur ut officia repudiandae nobis! Distinctio cupiditate optio accusamus culpa, dignissimos magni at et, velit impedit laborum iure voluptatibus tempore reiciendis accusantium possimus? Repellendus doloribus beatae, voluptatum tempore placeat eaque odit porro natus eos nihil. Debitis, saepe quibusdam qui iure corrupti voluptatum asperiores quia ipsum atque delectus, suscipit assumenda aperiam veniam voluptatibus magni. Repellendus officia autem eos vero harum rerum distinctio quos ratione, laboriosam architecto! Nulla voluptas, et in nostrum voluptates distinctio tempore. Quos est consequatur explicabo corporis maiores iure reprehenderit cumque. Omnis quae dicta dolore praesentium sed? Amet molestias asperiores sint nisi rerum nemo?

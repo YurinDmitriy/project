@@ -32,20 +32,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
-    'goods',
-    'crispy_bootstrap5',
-    'users',
-    "user_profile",
-    "shop",
-    "cart",
-    "payment",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_bootstrap5",
+    "crispy_forms",
+    "debug_toolbar",
+    "goods",
+    "users",
+    "user_profile",
+    "shop",
+    "cart",
+    "payment",
+    "main",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "myshop.urls"
@@ -127,8 +130,13 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"
 
 
 # Default primary key field type
@@ -136,4 +144,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = "bootstrap5"

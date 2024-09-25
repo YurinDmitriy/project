@@ -23,6 +23,7 @@ from users import views as user_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("main/", include("main.urls", namespace="main")),
     path("register/", user_views.register, name="register"),
     path("shop/", include("shop.urls", namespace="shop")),
     path("cart/", include("cart.urls", namespace="cart")),
@@ -33,3 +34,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]

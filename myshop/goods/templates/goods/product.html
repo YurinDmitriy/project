@@ -1,4 +1,34 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
+{% block links %}
+  <link rel="stylesheet" href="{% static 'goods/css/style.css' %}" />
+{% endblock %}
 {% block content %}
-  Некий товар
+  <div class="solo-product-card">
+    <div class="product-info">
+      <div>
+        <h1>{{ product.name }}</h1>
+        <h5>id: {{ product.display_id }}</h5>
+        <p class="description">
+          <b>Описание товара:</b> <br />{{ product.description }}
+        </p>
+      </div>
+      <div class="solo-product-image-block">
+        <img class="solo-product-image" src="{{ product.image.url }}" alt="product.name" />
+      </div>
+    </div>
+    <div class="price-block">
+      {% if product.discount %}
+        <div>
+          <a href="#" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
+          <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+        </div>
+      {% else %}
+        <div>
+          <a href="#" class="btn btn-primary">{{ product.price }}</a>
+          <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+        </div>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}

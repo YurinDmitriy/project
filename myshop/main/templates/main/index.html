@@ -1,0 +1,91 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block links %}
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
+{% endblock %}
+{% block content %}
+  <section>
+    <div class="bgvideo">
+      <video src="{% static 'main/files/1472742_People_Industry_1920x1080.mp4' %}" type="video/mp4" autoplay muted loop></video>
+      <div class="effect"></div>
+      <div class="video-text">
+        <h1>Elegant Designs</h1>
+      </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <!-- карусель -->
+        <div id="carouselExampleCaptions" class="carousel slide carusel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="d-block w-100">
+                <div class="row">
+                  <div class="col-lg-10 col-mg-10">
+                    <img src="{% static 'main/images/border.jpg' %}" class="w-100 pic" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block slide-text">
+                <div class="text-of-images">
+                  <h5>Услуги</h5>
+                  <p>От создания чертежей и проектов до выезда на дом!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-block w-100">
+                <div class="row">
+                  <div class="col-lg-10 col-mg-10">
+                    <img src="{% static 'main/images/instruments.jpg' %}" class="w-100 pic" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block slide-text">
+                <div class="text-of-images">
+                  <h5>Инструменты</h5>
+                  <p>Огромный выбор оптом и в розницу</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-block w-100">
+                <div class="row">
+                  <div class="col-lg-10 col-mg-10">
+                    <img src="{% static 'main/images/building_materials.jpeg' %}" class="w-100 pic" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block slide-text">
+                <div class="text-of-images">
+                  <h5>Стройматериалы</h5>
+                  <p>Широкий ассортимент на любой вкус и кошелек</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- после карусели -->
+        <div class="col-lg-12 col-md-12">
+          <p class="predfooter mt-2">
+            Можем ли мы Вам помочь? <br />
+            <a href="#" type="button" class="btn btn-outline-dark mt-2">Связь</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

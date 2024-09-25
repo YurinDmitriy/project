@@ -1,0 +1,88 @@
+.discounted-price {
+    background-color: green;
+    border: 1px green solid;
+}
+
+.initial-price-of-discounted-product {
+    color: grey;
+    text-decoration: line-through;
+    font-size: small;
+    margin-left: 5px;
+}
+
+.card {
+    padding: 10px;
+}
+
+.solo-product-card {
+    border-radius: 10px;
+    border: 1px gray solid;
+    margin: auto;
+    width: 60vw;
+    height: 80vh;
+    background-color: white;
+    padding: 20px;
+}
+
+.solo-product-image-block {
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.solo-product-image {
+    width: 100%;
+    margin: auto;
+
+}
+
+.product-info {
+    font-size: larger;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-info div {
+    width: 50%;
+}
+
+.product-info div:first-child {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.product-info h5 {
+    color: gray;
+}
+
+.price-block {
+    position: relative;
+    height: 50%;
+}
+
+.price-block div {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.add-to-shopping-cart {
+    width: 30px;
+}
+
+.add-to-shopping-cart:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+
+.multiple-product-cards-price-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card:hover {
+    cursor: pointer;
+}
