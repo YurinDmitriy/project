@@ -47,10 +47,10 @@
     width: 50%;
 }
 
-.product-info div:first-child {
+/* .product-info div:first-child {
     overflow: scroll;
     overflow-x: hidden;
-}
+} */
 
 .product-info h5 {
     color: gray;
@@ -85,4 +85,8 @@
 
 .card:hover {
     cursor: pointer;
+}
+
+#pag {
+    margin-top: 20px;
 }

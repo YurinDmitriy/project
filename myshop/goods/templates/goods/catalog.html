@@ -10,9 +10,8 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-8">
           <div class="row">
-            <!-- карты товара -->
             {% for product in products %}
-              <div class="col-lg-4 col-md-6 mt-4 product" onclick="location.href = 'product/{{ product.id }}'">
+              <div class="col-lg-4 col-md-6 mt-4 product" onclick="location.href = '{% url 'catalog:product' product.slug %}'">
                 <div class="card">
                   {% if product.image %}
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" />
@@ -56,6 +55,42 @@
           </div>
         </div>
       </div>
+
+      <nav id="pag">
+        <ul class="pagination justify-content-center example">
+          <div class="custom-shadow d-flex">
+            <li class="page-item {% if not products.has_previous %} disabled {% endif %} ">
+              <a class="page-link"
+                href="{% if products.has_previous %}
+                  ?page={{ products.previous_page_number }}
+                {% else %}
+                  #
+                {% endif %}">
+                Назад
+              </a>
+            </li>
+
+            {% for page in products.paginator.page_range %}
+              {% if page >= products.number|add:- 2 and page <= products.number|add:2 %}
+                <li class="page-item {% if products.number == page %} active {% endif %}">
+                  <a href="?page={{ page }}" class="page-link">{{ page }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            <li class="page-item {% if not products.has_next %} disabled {% endif %} ">
+              <a class="page-link"
+                href="{% if products.has_next %}
+                  ?page={{ products.next_page_number }}
+                {% else %}
+                  #
+                {% endif %}">
+                Вперед
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </div>
   </section>
-{% endblock %}Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quia culpa animi vitae illum? Animi reprehenderit in alias porro at, cupiditate quo, hic totam, ad similique laudantium saepe quis perspiciatis. Molestiae assumenda dolorem suscipit necessitatibus quos facere tempore. Rerum cumque dolorem nisi? Nihil harum veritatis ut autem dolor labore sequi maiores laudantium magni ducimus, sit voluptates facilis dicta blanditiis consequuntur. Eius, modi fuga illum perspiciatis consectetur ad repudiandae illo aliquid at sint doloremque accusamus exercitationem. Sapiente eius non ad eveniet delectus ratione perspiciatis accusamus natus facere nemo, placeat cumque totam! Autem vel obcaecati esse eius quia vero suscipit quidem ducimus id, beatae sunt quo repellendus laudantium inventore, dignissimos repudiandae sapiente sit enim eum quis? Eveniet ipsum doloribus dolore quas ducimus? Officia incidunt error magni et iste totam commodi corporis? Autem officiis nisi natus illum dolore. Ab voluptatem doloribus debitis ex esse libero veniam dolores. Assumenda recusandae reiciendis iure? Pariatur, blanditiis. Ratione delectus odit ullam voluptates laudantium assumenda eveniet, perspiciatis adipisci dolores alias accusantium dignissimos quam minima, pariatur quo provident ipsa architecto officiis exercitationem reprehenderit? Laboriosam, laudantium! Fugit ad quae illum. Nemo dicta minima eos illum optio sint obcaecati mollitia amet excepturi, consequatur illo? Temporibus, eos! Dolores molestiae consectetur perferendis amet! Laboriosam recusandae dolores maxime, quod consectetur ut officia repudiandae nobis! Distinctio cupiditate optio accusamus culpa, dignissimos magni at et, velit impedit laborum iure voluptatibus tempore reiciendis accusantium possimus? Repellendus doloribus beatae, voluptatum tempore placeat eaque odit porro natus eos nihil. Debitis, saepe quibusdam qui iure corrupti voluptatum asperiores quia ipsum atque delectus, suscipit assumenda aperiam veniam voluptatibus magni. Repellendus officia autem eos vero harum rerum distinctio quos ratione, laboriosam architecto! Nulla voluptas, et in nostrum voluptates distinctio tempore. Quos est consequatur explicabo corporis maiores iure reprehenderit cumque. Omnis quae dicta dolore praesentium sed? Amet molestias asperiores sint nisi rerum nemo?
+{% endblock %}
