@@ -33,6 +33,8 @@
 .solo-product-image {
     width: 100%;
     margin: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
 
 }
 

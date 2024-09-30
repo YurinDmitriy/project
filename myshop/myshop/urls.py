@@ -19,17 +19,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from users import views as user_views
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("main/", include("main.urls", namespace="main")),
-    path("register/", user_views.register, name="register"),
-    path("shop/", include("shop.urls", namespace="shop")),
-    path("cart/", include("cart.urls", namespace="cart")),
-    path("payment/", include("payment.urls", namespace="payment")),
-    path("user_profile/", include("user_profile.urls", namespace="user_profile")),
+    path("", include("main.urls", namespace="main")),
     path("catalog/", include("goods.urls", namespace="catalog")),
+    path("user/", include("users.urls", namespace="users")),
+    path("cart/", include("carts.urls", namespace="carts")),
+
+
 ]
 
 if settings.DEBUG:
