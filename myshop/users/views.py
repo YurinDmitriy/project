@@ -17,6 +17,11 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+
+                redirect_page = request.POST.get("next", None)
+                if redirect_page and redirect_page != reverse("user:login"):
+                    return HttpResponseRedirect(request.POST.get("next"))
+
                 return HttpResponseRedirect(reverse("main:main"))
 
     else:
@@ -70,3 +75,7 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse("main:main"))
+
+
+def users_cart(request):
+    return render(request, "users/users_cart.html")

@@ -20,13 +20,13 @@
     <div class="price-block">
       {% if product.discount %}
         <div>
-          <a href="#" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
-          <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+          <a href="{% url 'carts:cart_add' product.slug %}" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
+          <a href="{% url 'carts:cart_add' product.slug %}"><img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" /></a>
         </div>
       {% else %}
         <div>
-          <a href="#" class="btn btn-primary">{{ product.price }}</a>
-          <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+          <a href="{% url 'carts:cart_add' product.slug %}" class="btn btn-primary">{{ product.price }}</a>
+          <a href="{% url 'carts:cart_add' product.slug %}"><img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" /></a>
         </div>
       {% endif %}
     </div>

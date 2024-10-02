@@ -11,28 +11,28 @@
         <div class="col-lg-8">
           <div class="row">
             {% for product in products %}
-              <div class="col-lg-4 col-md-6 mt-4 product" onclick="location.href = '{% url 'catalog:product' product.slug %}'">
+              <div class="col-lg-4 col-md-6 mt-4 product">
                 <div class="card">
                   {% if product.image %}
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" />
                   {% endif %}
 
                   <div class="card-body">
-                    <h4 class="card-title">{{ product.name }}</h4>
+                    <h4 class="card-title"><a href="{% url 'catalog:product' product.slug %}">{{ product.name }}</a></h4>
                     <h6 style="color: gray;">id: {{ product.display_id }}</h6>
 
                     <p class="card-text">{{ product.description }}</p>
                     {% if product.discount %}
                       <div class="multiple-product-cards-price-block">
                         <div>
-                          <a href="#" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
+                          <a href="{% url 'carts:cart_add' product.slug %}" class="btn btn-primary discounted-price">{{ product.sell_price }}</a><span class="initial-price-of-discounted-product">{{ product.price }}</span>
                         </div>
-                        <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+                        <a href="{% url 'carts:cart_add' product.slug %}"><img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" /></a>
                       </div>
                     {% else %}
                       <div class="multiple-product-cards-price-block">
-                        <a href="#" class="btn btn-primary">{{ product.price }}</a>
-                        <img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" />
+                        <a href="{% url 'carts:cart_add' product.slug %}" class="btn btn-primary">{{ product.price }}</a>
+                        <a href="{% url 'carts:cart_add' product.slug %}"><img class="add-to-shopping-cart" src="{% static 'goods/images/add_to_shopping_cart.svg' %}" alt="" /></a>
                       </div>
                     {% endif %}
                   </div>
@@ -62,16 +62,22 @@
             <li class="page-item {% if not products.has_previous %} disabled {% endif %} ">
               <a class="page-link"
                 href="{% if products.has_previous %}
+                  
+
                   ?page={{ products.previous_page_number }}
                 {% else %}
+                  
+    
                   #
+
+
                 {% endif %}">
                 Назад
               </a>
             </li>
 
             {% for page in products.paginator.page_range %}
-              {% if page >= products.number|add:-2 and page <= products.number|add:2 %}
+              {% if page >= products.number|add:'-2' and page <= products.number|add:'2' %}
                 <li class="page-item {% if products.number == page %} active {% endif %}">
                   <a href="?page={{ page }}" class="page-link">{{ page }}</a>
                 </li>
@@ -81,9 +87,15 @@
             <li class="page-item {% if not products.has_next %} disabled {% endif %} ">
               <a class="page-link"
                 href="{% if products.has_next %}
+                  
+        
                   ?page={{ products.next_page_number }}
                 {% else %}
+                  
+        
                   #
+
+
                 {% endif %}">
                 Вперед
               </a>
